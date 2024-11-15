@@ -1,0 +1,8 @@
+
+<app-header *ngIf="isLoggedIn"></app-header>
+<app-side-nav *ngIf="isLoggedIn"></app-side-nav>
+
+
+<div [ngClass]="isLoggedIn ? 'p-4 mt-10 ml-64' : 'p-0'">
+  <router-outlet></router-outlet>
+</div>

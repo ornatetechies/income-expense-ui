@@ -1,0 +1,86 @@
+<div class="container mx-auto mt-8 px-4 max-w-lg">
+  <h2 class="text-2xl font-bold mb-4">Create New Transaction</h2>
+  <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
+    <!-- Amount -->
+    <div class="mb-4">
+      <label for="amount" class="block text-gray-700 font-medium mb-2">Amount</label>
+      <input
+        id="amount"
+        type="text"
+        formControlName="amount"
+      class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+      placeholder="Enter amount"
+      />
+      <div *ngIf="transactionForm.get('amount')?.invalid && transactionForm.get('amount')?.touched" class="text-red-500">
+        Amount is required and must be positive.
+      </div>
+    </div>
+
+    <!-- Type -->
+    <div class="mb-4">
+      <label class="block text-gray-700 font-medium mb-2">Type</label>
+      <ng-select
+        id="type"
+        [items]="transactionTypes"
+        placeholder="Tap to select option"
+        bindLabel="label"
+        bindValue="value"
+        [clearable]="false"
+        [searchable]="false"
+        formControlName="type"
+        class="w-full"
+      >
+      </ng-select>
+      <div *ngIf="transactionForm.get('type')?.invalid && transactionForm.get('type')?.touched" class="text-red-500">
+        Type is required.
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="mb-4">
+      <label for="description" class="block text-gray-700 font-medium mb-2">Description</label>
+      <textarea
+        id="description"
+        formControlName="description"
+        rows="4"
+        class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+        placeholder="Enter description"
+      ></textarea>
+      <div *ngIf="transactionForm.get('description')?.invalid && transactionForm.get('description')?.touched" class="text-red-500">
+        Description must not exceed 255 characters.
+      </div>
+    </div>
+
+    <!-- Transaction Date -->
+    <div class="mb-4">
+      <label for="transactionDate" class="block text-gray-700 font-medium mb-2">Transaction Date</label>
+      <input
+        id="transactionDate"
+        type="datetime-local"
+        formControlName="transactionDate"
+        class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+      />
+      <div *ngIf="transactionForm.get('transactionDate')?.invalid && transactionForm.get('transactionDate')?.touched" class="text-red-500">
+        Transaction date is required.
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="flex justify-between">
+      <button
+        type="button"
+        class="bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded hover:bg-gray-400"
+        (click)="cancel()"
+      >
+        Cancel
+      </button>
+      <button
+        type="submit"
+        class="bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600"
+        [disabled]="transactionForm.invalid"
+      >
+        Create Transaction
+      </button>
+    </div>
+  </form>
+</div>

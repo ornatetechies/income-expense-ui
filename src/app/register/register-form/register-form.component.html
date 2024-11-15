@@ -1,0 +1,216 @@
+<div class=" p-6 -mt-10">
+<div class="text-left mb-8">
+  <a href="#" class="block pb-8">
+    <img src="/assets/logo.png" alt="Logo" class="h-16">
+  </a>
+  <h2 class="text-3xl font-bold mt-4 text-blue-700 flex items-center">
+    Hey, Hello
+    <span class="ml-2">
+      <img src="/assets/hello.png" alt="Hello Icon" class="h-8">
+    </span>
+  </h2>
+  <p class="text-gray-400 mt-2">Welcome, Please enter your details</p>
+</div>
+
+<div *ngIf="regsuccessmsg" class="flex justify-center items-center p-4 text-sm bg-blue-100 text-blue-700 rounded-lg" role="alert">
+  {{ regsuccessmsg }}
+</div>
+
+<div *ngIf="error" class="flex justify-center items-center p-4 text-sm text-red-700 bg-red-200 rounded-lg" role="alert">
+  {{ error }}
+</div>
+</div>
+<form [formGroup]="registerForm" (ngSubmit)="registerUser()" class="space-y-6 p-6">
+  <!-- Username -->
+  <div class="mb-4">
+    <!-- First Name and Last Name -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <label for="firstName" class="block text-md font-medium text-gray-600">First Name</label>
+        <input
+          id="firstName"
+          type="text"
+          class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2"
+          formControlName="firstName"
+        />
+        <small class="text-red-500" *ngIf="f['firstName']?.touched && f['firstName']?.errors?.['required']">
+          First Name is required.
+        </small>
+      </div>
+      <div>
+        <label for="lastName" class="block text-md font-medium text-gray-600">Last Name</label>
+        <input
+          id="lastName"
+          type="text"
+          class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2"
+          formControlName="lastName"
+        />
+        <small class="text-red-500" *ngIf="f['lastName']?.touched && f['lastName']?.errors?.['required']">
+          Last Name is required.
+        </small>
+      </div>
+    </div>
+    <label for="username" class="block text-md font-medium text-gray-600 mt-4">Username</label>
+    <input
+      id="username"
+      type="text"
+      class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2"
+      formControlName="username"
+    />
+    <small class="text-red-500" *ngIf="f['username']?.touched && f['username']?.errors?.['required']">
+      Username is required.
+    </small>
+    <small class="text-red-500" *ngIf="f['username']?.touched && f['username']?.errors?.['minlength']">
+      Username must be at least 3 characters.
+    </small>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+
+      <div class="relative">
+        <label for="password" class="block text-md font-medium text-gray-600">Password</label>
+
+        <input
+          id="password"
+          [type]="passwordVisible ? 'text' : 'password'"
+          required
+          class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2"
+          name="password"
+          formControlName="password"
+        >
+
+        <svg
+          *ngIf="passwordVisible; else showEye"
+          class="absolute right-3 top-10 cursor-pointer h-6 w-6 text-gray-500"
+          (click)="togglePasswordVisibility()"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <!-- Eye Open Icon -->
+          <path
+            d="M2.42 12.713c-.136-.216-.204-.324-.242-.49-.03-.125-.03-.322 0-.447.038-.166.106-.274.242-.49C3.546 9.505 6.895 5 12 5c5.105 0 8.455 4.505 9.58 6.287.136.216.204.324.242.49.03.125.03.322 0 .447-.038.166-.106.274-.242.49C20.455 14.495 17.105 19 12 19c-5.105 0-8.455-4.505-9.58-6.287z"
+            stroke="grey"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M12 15c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z"
+            stroke="grey"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+
+        <ng-template #showEye>
+          <svg
+            class="absolute right-3 top-10 cursor-pointer h-6 w-6 text-gray-500"
+            (click)="togglePasswordVisibility()"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <!-- Eye Closed Icon -->
+            <path
+              d="M10.743 5.092c.407-.06.826-.092 1.257-.092 5.105 0 8.455 4.505 9.58 6.287.136.216.204.324.242.49.03.125.03.322 0 .447-.038.166-.106.274-.242.49-.3.474-.757 1.142-1.363 1.865m-13.492-9.485c-2.162 1.467-3.63 3.504-4.303 4.57-.136.217-.204.325-.242.491-.03.125-.03.322 0 .447.038.166.106.274.242.49C3.546 14.495 6.895 19 12 19c2.059 0 3.832-.732 5.288-1.724M3 3l18 18m-11.121-9.121c-.543.543-.879 1.293-.879 2.121 0 1.657 1.343 3 3 3 .828 0 1.578-.336 2.121-.879"
+              stroke="grey"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </ng-template>
+      </div>
+
+
+      <div class="relative">
+        <label for="confirmPassword" class="block text-md font-medium text-gray-600">Confirm Password</label>
+
+        <!-- Dynamic Type Binding for Password Visibility -->
+        <input
+          id="confirmPassword"
+          [type]="confirmPasswordVisible ? 'text' : 'password'"
+          required
+          class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2"
+          formControlName="confirmPassword"
+        />
+
+        <!-- Toggle Button -->
+        <svg
+          *ngIf="confirmPasswordVisible; else showEyeC"
+          class="absolute right-3 top-10 cursor-pointer h-6 w-6 text-gray-500"
+          (click)="toggleConfirmPasswordVisibility()"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <!-- Eye Open Icon -->
+          <path
+            d="M2.42 12.713c-.136-.216-.204-.324-.242-.49-.03-.125-.03-.322 0-.447.038-.166.106-.274.242-.49C3.546 9.505 6.895 5 12 5c5.105 0 8.455 4.505 9.58 6.287.136.216.204.324.242.49.03.125.03.322 0 .447-.038.166-.106.274-.242.49C20.455 14.495 17.105 19 12 19c-5.105 0-8.455-4.505-9.58-6.287z"
+            stroke="grey"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M12 15c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z"
+            stroke="grey"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+
+        <ng-template #showEyeC>
+          <svg
+            class="absolute right-3 top-10 cursor-pointer h-6 w-6 text-gray-500"
+            (click)="toggleConfirmPasswordVisibility()"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <!-- Eye Closed Icon -->
+            <path
+              d="M10.743 5.092c.407-.06.826-.092 1.257-.092 5.105 0 8.455 4.505 9.58 6.287.136.216.204.324.242.49.03.125.03.322 0 .447-.038.166-.106.274-.242.49-.3.474-.757 1.142-1.363 1.865m-13.492-9.485c-2.162 1.467-3.63 3.504-4.303 4.57-.136.217-.204.325-.242.491-.03.125-.03.322 0 .447.038.166.106.274.242.49C3.546 14.495 6.895 19 12 19c2.059 0 3.832-.732 5.288-1.724M3 3l18 18m-11.121-9.121c-.543.543-.879 1.293-.879 2.121 0 1.657 1.343 3 3 3 .828 0 1.578-.336 2.121-.879"
+              stroke="grey"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </ng-template>
+
+        <!-- Immediate Error for Password Mismatch -->
+        <small
+          class="text-red-500"
+          *ngIf="registerForm.hasError('passwordMismatch') && (f['confirmPassword'].dirty || f['confirmPassword'].touched)"
+        >
+          Passwords do not match.
+        </small>
+      </div>
+    </div>
+
+  </div>
+
+  <button
+    type="submit"
+    class="w-full bg-indigo-500 text-white py-2 px-4 rounded-lg hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+  >
+    Register
+  </button>
+</form>
+<div class=" p-6 text-center -mt-5">
+<p class="text-gray-500 text-lg mx-auto">
+  Already have an account?&nbsp;
+  <a href="/login" class="text-indigo-500 font-bold">Log In</a>
+</p>
+</div>

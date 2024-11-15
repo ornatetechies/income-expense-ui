@@ -1,0 +1,104 @@
+/*.custom-text-title {*/
+/*  font-size: 30px;*/
+/*  color: var(--Base-White, #FFF);*/
+/*  font-style: normal;*/
+/*  font-weight: 600;*/
+/*  line-height: 38px; !* 126.667% *!*/
+/*  display: flex;*/
+/*}*/
+
+/*.custom-text-desc {*/
+/*  color: #FFF;*/
+/*  font-size: 14px;*/
+/*  font-style: normal;*/
+/*  font-weight: 500;*/
+/*  line-height: 21px; !* 150% *!*/
+/*}*/
+/*.header-text{*/
+/*  color: var(--Blue-700, #2699BF);*/
+/*  font-size: 28.087px;*/
+/*  font-style: normal;*/
+/*  font-weight: 600;*/
+/*  line-height: normal;*/
+/*}*/
+/*.alert-bc {*/
+/*  color: var(--Blue-100, #2699BF);*/
+/*  background-color: #b6e5fa;*/
+/*}*/
+/*.error {*/
+/*  color: red;*/
+/*  font-size: 14px;*/
+/*  margin-top: 5px;*/
+/*}*/
+
+/*.validation-header {*/
+/*  color: var(--Blue-700, red);*/
+/*  font-size: 14px;*/
+/*  font-style: normal;*/
+/*  font-weight: 500;*/
+/*  line-height: normal;*/
+/*}*/
+/*.validation-column {*/
+/*  display: table-cell;*/
+/*  vertical-align: top;*/
+/*  padding-right: 10px;*/
+/*}*/
+/*.validation-message {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*}*/
+/*.validation-error {*/
+/*  color: red;*/
+/*  display: block;*/
+/*}*/
+/*.validation-success {*/
+/*  color: green;*/
+/*  display: block;*/
+/*}*/
+/*.validation-error,*/
+/*.validation-success {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  margin: 4px 2px;*/
+/*}*/
+/*.validation-error .circle {*/
+/*  background-color: #ff0000;*/
+/*  color: white;*/
+/*}*/
+/*.validation-success .circle {*/
+/*  background-color: #70C217;*/
+/*  color: white;*/
+/*}*/
+/*.circle {*/
+/*  display: inline-flex;*/
+/*  align-items: center;*/
+/*  justify-content: center;*/
+/*  width: 10px;*/
+/*  height: 10px;*/
+/*  border-radius: 50%;*/
+/*  margin-right: 8px;*/
+/*  font-size: 11px;*/
+/*  font-weight: bold;*/
+/*  flex-shrink: 0;*/
+/*}*/
+
+/*.input-text{*/
+/*  color: var(--Grey-400, #98A2B3);*/
+/*  font-feature-settings: 'cv03' on, 'cv04' on;*/
+/*  font-size: 15px;*/
+/*  font-style: normal;*/
+/*  font-weight: 400;*/
+/*  line-height: 145%; !* 20.3px *!*/
+/*  border: 1px solid var(--Grey-300, #D0D5DD);*/
+/*  padding: 16px;*/
+
+/*}*/
+/*@media (max-width: 1540px) {*/
+/*  .custom-text-title {*/
+/*    font-size: 20px;*/
+/*  }*/
+
+/*  .custom-text-desc {*/
+/*    font-size: 14.5px;*/
+/*  }*/
+/*}*/
